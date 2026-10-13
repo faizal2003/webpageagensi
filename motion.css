@@ -1,0 +1,76 @@
+/* Shared motion and interaction language for the existing page. */
+.header { gap: 18px; }
+.motion-toggle { margin-left: auto; border: 1px solid var(--color-rule); border-radius: 20px; padding: 8px 12px; min-height: 44px; background: transparent; color: var(--color-muted); font-size: 11px; }
+.motion-toggle::before { content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 7px; border-radius: 50%; background: var(--color-accent); }
+.motion-toggle[aria-pressed="true"]::before { background: var(--color-muted); }
+.motion-toggle:disabled { cursor: default; }
+.brand, .brand img, .button span, .nav-cta span, .text-link span, .contact-circle span, .hero-bottom a, .dialog-close, .tags span { transition: transform 280ms var(--ease-out), color 180ms, background-color 180ms, border-color 180ms; }
+.nav-cta, .text-link, .footer-top nav a, .footer-bottom a { transition: color 180ms, border-color 180ms; }
+.brand:hover img { transform: rotate(-12deg); }
+.brand:hover { color: var(--color-focus); }
+.nav-cta:hover, .text-link:hover, .footer-top nav a:hover, .footer-bottom a:hover, .footer-top nav a[aria-current] { color: var(--color-focus); border-color: var(--color-focus); }
+.button:hover span, .nav-cta:hover span, .text-link:hover span { transform: translate(3px, -3px); }
+.button:focus-visible span, .nav-cta:focus-visible span, .text-link:focus-visible span { transform: translate(3px, -3px); }
+.hero-bottom a:hover { transform: translateY(4px); background: var(--color-ink); color: var(--color-paper); }
+.button, .contact-circle { transition: transform 300ms var(--ease-out), background-color 220ms, color 220ms, box-shadow 220ms; }
+.button:hover { transform: translateY(-2px); box-shadow: 0 5px 0 var(--color-rule); }
+.button:active, .contact-circle:active { transform: scale(.97); box-shadow: none; }
+.contact-circle:hover { transform: rotate(-6deg); }
+.contact-circle:hover span { transform: translate(5px, -5px); }
+.contact-circle:focus-visible { background: var(--color-ink); color: var(--color-paper); }
+.possibilities { position: relative; }
+.hero-copy:hover .orange { display: inline-block; animation: signal-pop 500ms var(--ease-out); }
+.discipline-strip b { display: inline-block; transition: transform 600ms var(--ease-out); }
+.discipline-strip:hover b { transform: rotate(180deg); }
+.service-list details { transition: border-color 200ms, background-color 200ms; }
+.service-list details:hover, .service-list details:focus-within { border-color: var(--color-accent); }
+.service-list summary { transition: color 180ms; }
+.service-list summary:hover, .service-list summary:focus-visible { color: var(--color-focus); }
+.service-number { transition: color 200ms; }
+details[open] .service-number { color: var(--color-focus); }
+.plus::before, .plus::after { transition: transform 280ms var(--ease-out), background-color 180ms; }
+details.is-closing .plus::after { transform: rotate(90deg); }
+.tags span:hover { transform: translateY(-2px); background: var(--color-surface); border-color: var(--color-muted); }
+.service-cta { padding: 0; background: transparent; border: 0; border-bottom: 1px solid var(--color-ink); color: var(--color-ink); margin-top: 20px; }
+.steps { align-items: start; }
+.steps article { position: relative; transition: border-color 240ms, background-color 240ms; }
+.steps article::before { content: ''; position: absolute; top: -1px; left: 0; width: 100%; height: 2px; background: var(--color-accent); transform: scaleX(0); transform-origin: left; transition: transform 400ms var(--ease-out); }
+.steps article:hover::before, .steps article:focus-within::before, .steps article.is-expanded::before { transform: scaleX(1); }
+.steps h3 { transition: color 220ms; }
+.steps article:hover h3, .steps article.is-expanded h3 { color: var(--color-focus); }
+.step-toggle { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; min-height: 44px; margin-top: 20px; padding: 8px 0; background: transparent; border: 0; color: var(--color-ink); font-size: 12px; text-align: left; }
+.step-toggle span { font-size: 21px; color: var(--color-focus); }
+.step-toggle:hover { color: var(--color-focus); }
+.step-more p { margin-top: 12px; padding-bottom: 10px; }
+.hero-art .reactor-core { animation: reactor-turn 16s linear infinite; }
+.hero-assembly { animation: assembly-float 12s ease-in-out infinite; }
+.about-visual .sculpture-rings { animation: sculpture-float 14s ease-in-out infinite; }
+.about-visual .sculpture-shadow { animation: sculpture-shadow 14s ease-in-out infinite; }
+.hero-art .orbit-two::before, .hero-art .orbit-two::after { animation: signal-pop 3s ease-in-out infinite; }
+.dialog-open { overflow: hidden; }
+dialog[open]::backdrop { animation: backdrop-in 240ms ease-out; }
+dialog input, dialog textarea, dialog select { transition: border-color 180ms, background-color 180ms, box-shadow 180ms; }
+dialog label { transition: color 180ms; }
+dialog label:focus-within, dialog label.is-filled { color: var(--color-focus); }
+dialog input:focus, dialog textarea:focus, dialog select:focus { border-color: var(--color-focus); background: var(--color-paper); box-shadow: 0 0 0 3px var(--color-surface); }
+.dialog-close:hover { transform: rotate(90deg); color: var(--color-focus); }
+.button.is-saved { background: var(--color-focus); border-color: var(--color-focus); }
+@keyframes signal-pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.4); } }
+@keyframes reactor-turn { from { transform: rotateX(18deg) rotateY(-24deg) rotateZ(12deg); } to { transform: rotateX(18deg) rotateY(336deg) rotateZ(12deg); } }
+@keyframes assembly-float {
+  0%, 100% { transform: translateY(0) rotateX(57deg) rotateY(0deg) rotateZ(-40deg); }
+  50% { transform: translateY(-12px) rotateX(63deg) rotateY(12deg) rotateZ(-34deg); }
+}
+@keyframes sculpture-float {
+  0%, 100% { transform: translateY(0) rotateX(57deg) rotateY(-16deg) rotateZ(-30deg); }
+  50% { transform: translateY(-10px) rotateX(49deg) rotateY(6deg) rotateZ(-12deg); }
+}
+@keyframes sculpture-shadow {
+  0%, 100% { transform: scaleX(1); opacity: 1; }
+  50% { transform: scaleX(.85); opacity: .6; }
+}
+@keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+@media (max-width: 30rem) { .header { gap: 10px; } .motion-toggle { font-size: 10px; padding-inline: 8px; } .motion-toggle::before { display: none; } .header .nav-cta { gap: 8px; } .header .brand { font-size: 21px; gap: 6px; } .header .brand img { width: 32px; height: 32px; } }
+.motion-paused { scroll-behavior: auto; }
+.motion-paused *, .motion-paused *::before, .motion-paused *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
